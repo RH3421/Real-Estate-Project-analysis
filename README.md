@@ -1,49 +1,37 @@
 # King County Real Estate Analysis
 
-
-
 ![from giphy](https://media.giphy.com/media/l0IylQoMkcbZUbtKw/giphy.gif)
-
 
 Authors:  [Samira Chatrathi](https://github.com/sgchatrathi), [Andrew Choi](https://github.com/cjunhyuk), and [Richard Hinds](https://github.com/RH3421)
 
 ## Business Problem
-The Real Estate Market is undoubtedly, one of high volatility. Whether it is rooted in a housing bubble or located within a very concentrated region, housing value is determined by a wide-array of factors outside of an individuals control. We, ultimately, strive as a data science team to see what factors we can encourage our stakeholder to consider when making decisions as to what to prioritize within a home rennovation. We are analyzing from the point of view of a homeowner and private flipper in King County, Washington looking to increase the value of their home through controllable factors. Our value is defined as the overall price of the home, and our variables are iterated over five models to see how some factors change the overall value. Not only will our modeling and analysis help our stakeholder understand King County specifically, but it will also provide inferential understanding to help them decide which aspects of home rennovation can give them the best return on investment.
+The real estate market is undoubtedly one of high volatility. Whether it is rooted in a housing bubble or localized to a very concentrated geographic region, home value is determined by a wide-array of factors, many of which lie outside of a homeowner's control. As data scientists we strive to identify factors and develop recommendations that are highly actionable. In the current case we decided to leverage the home sales dataset of King County, Washington to identify factors that homeowners could actively modify to increase the value of their home. In this way our stakeholders would have a clear understanding of which home improvements to prioritize to maximally increase their home value.
 
 ## Data and Preparation
 
-We used home sales data for King County, Washington which had a population of 2.25 million people. We reviewed home sales from 2014 to 2015 which contains over 21k datapoints and cleaned our data, removing erroneous values. Some of our limitations stemmed from the fact that our data was collected from the range of 2014-2015. This prevented us from seeing how a current homeowner could use our model while understanding the inflation rate as well as the change in value in the current time period. Another data limitation that we faced, was understanding how rennovation is defined consistently across homeowners, as costs of rennovation are difficult to incorporate with the current dataset. We decided to drop variables that didn't have as much use value to our stakeholder. The columns we decided to drop were latitude, longitude, waterfront, view, The square footage of interior housing living space for the nearest 15 neighbors, and the square footage of the land lots of the nearest 15 neighbors. We chose these varaibles because our stakeholder is focusing on controllable factors for their own rennovation. Of the controllable variables, we were able to create a dummy variable associated with our conditon. Althought, we didn't use the zipcode data in our analysis , we were able to bin zipcode based off of rural and not rural. After we cleaned all of our data we labeled the final dataset as 'master_dataset.csv'. 
-
-
-### Methods
-
-We used Scikit Learn as well as Sci-py to validate that our model. 
-
+We used home sales data for King County, Washington which has a population of 2.25 million people. We reviewed home sales data from 2014 to 2015 which contained over 21k datapoints and cleaned our data, removing erroneous values. One limitation of using data from a single year period is that trends and effects secondary to long term influences such as inflation were difficult to account for. To prepare the data for ananlysis we decided to drop variables that pertinent for our stakeholder. We dropped were latitude, longitude, waterfront, view, square footage of interior housing living space for the nearest 15 neighbors, and the square footage of the land lots of the nearest 15 neighbors. Again, these varaibles were dropped because our stakeholder is a homeowner looking to increase the value of their home by rennovation. After we cleaned and processed our data we labeled the final dataset as 'master_dataset.csv' to use in performing the analysis. 
 
 ## Modeling
 
-## Baseline Model
+### Methods
 
-Our first model was undoubtedly our baseline model. We used a baseline model to show us a progression of our iterations. The baseline model represented the average price of homes within King County within the time frame of 2014-2015
+We used Scikit Learn as well as SciPy to build our models and perform the analyses. 
 
+### Model 0: Baseline 
+
+Our first model was our baseline model. We used a baseline model to a reference for the performance of our future model iterations. The baseline model represented the average sale price of homes within King County within the time frame of 2014-2015.
 
 ### Model 1
 
-Our first model contained a list of all of the continuous variables we kept from the original data set. This included 'bedrooms', 'bathrooms', 'sqft_lot', 'floors', 'sqft_above', and 'yr_built'. We believed including these variables would be helpful because it would give us a holistic understanding of variables that take on a wide-array of values. Our intention with Model 1, was to see which potential variables would need to be dropped. The R-squared value for Model 1 was 0.481. This tells us that our x-variables (Bedrooms, Bathrooms, Sqft-Lot, Floors, SqFt-Above, and Yr-built) accounted for 48% of variability in our price or value of the house. We also analyzed the root mean squared error (RMSE) which was $258662. Outside of our R-Squared our RMSE is a metric error in our model. We chose RMSE over Absoulte Mean Squared Error because AMSE is highly biased for higher values. RMSE is better in terms of reflecting performance when dealing with large error values, and in this case, housing prices.
-
+Our first model contained a list of all of the continuous variables we kept from the original data set. This included Bedrooms, Bathrooms, Sqft-Lot, Floors, SqFt-Above, and Yr-built. We believed including these variables would be helpful because it would give us a holistic understanding of variables that take on a wide-array of values. Our intention with Model 1 was to identify which variables would need to be dropped. The R-squared value for Model 1 was 0.481. This tells us that our x-variables (Bedrooms, Bathrooms, Sqft-Lot, Floors, SqFt-Above, and Yr-built) accounted for 48% of variability of the sale price of a home. We also calculated the root mean squared error (RMSE) to be $258662. Secondary to the R-squared value, RMSE served as the metric of error for our analyses. We chose RMSE over Absoulte Mean Squared Error (AMSE) because AMSE performs poorly with high values. RMSE is better in terms of  performance when dealing with large error values and, in this case, housing prices.
 
 ### Model 2
 
-Our iteration of only having one variable (Square-Foot Living) in Model 2 was to see how this would effect our overall R-Squared value. From the heatmap correlation table we were able to see that Square-Foot Living was the variable that had the highest correlation (0.7) with price. After conducting the model, The R-squared value of Model 2 proved to be  0.498 which is an improvement on Model 1. This tells us that our x-variable (sqft_living) accounts for 50% of variability in home sale price. Our RMSE was $254336.12, a %1.7 increase from our prior model, showing us that this model is off by the aforementioned dollar amount.
-
-
+For our second iteration we used only one variable Square-Foot Living. This was to see how this would effect our overall R-squared value. From the heatmap correlation table we saw that Square-Foot Living was the variable that had the highest correlation with price (0.7). After running the model, the R-squared value for Model 2 was 0.498, an improvement on Model 1. This tells us that our x-variable Square-Foot Living accounts for 50% of variability in home sale price. Our RMSE was $254336, a %1.7 increase from our prior model.
 
 ### Model 3
 
-Our third model wanted to take advantage of the recursive feature elimination that we conducted after model 1 in order to prioritize which variables would be the most effective to keep in our model. Recursive feature elimination is a feature selection method that fits a model while also removing the weakest features until the specified number of features to keep. We decided to keep six features in our model, dropping the lowest two. Rennovations are expensive and considering the most important variables will undoubtedly help our homeowner narrow down their priorities. We also included oour categorical variable of condition allowing us to see how a baseline status and overall up keep of a home can contribute to the overall price.   The R-squared value of Model 3 is 0.531 which is an improvement on Model 2. This tells us that our x-variables account for 53% of variability in house sale price. However, multicollinearity between bathrooms and sqft_living might have played a role in increasing this metric. 
-
-
-
+For our third model we wanted to take advantage of the recursive feature elimination (RFE) that we conducted after model 1 in order to prioritize which variables would be the most impactful to keep in our model. RFE is a feature selection method that fits a model while also removing the weakest features until the specified number of features to keep is achieved. We decided to keep six features in our model. Renovations are expensive and considering the most impactful variables will undoubtedly help our homeowner stakeholder manage their renovation priorities. We also included the categorical variable of condition in this model, allowing us to see the quality of materials used in a home can contribute to the overall sale price. The R-squared value of Model 3 is 0.531 which is an improvement on Model 2. This tells us that our x-variables account for 53% of variability in house sale price. However, multicollinearity between bathrooms and sqft_living might have played a role in increasing this metric. 
 
 ### Model 4
 
@@ -86,11 +74,3 @@ Based on our analyses we recommend homeowners focus on three key actions to incr
 
 ## For More Information
 View the full analysis via the [Jupyter Notebook](https://github.com/sgchatrathi/Real-Estate-Project-analysis/blob/main/Main%20Notebook.ipynb).
-
-
-
-
-
-
-
-
