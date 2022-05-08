@@ -31,46 +31,35 @@ For our second iteration we used only one variable Square-Foot Living. This was 
 
 ### Model 3
 
-For our third model we wanted to take advantage of the recursive feature elimination (RFE) that we conducted after model 1 in order to prioritize which variables would be the most impactful to keep in our model. RFE is a feature selection method that fits a model while also removing the weakest features until the specified number of features to keep is achieved. We decided to keep six features in our model. Renovations are expensive and considering the most impactful variables will undoubtedly help our homeowner stakeholder manage their renovation priorities. We also included the categorical variable of condition in this model, allowing us to see the quality of materials used in a home can contribute to the overall sale price. The R-squared value of Model 3 is 0.531 which is an improvement on Model 2. This tells us that our x-variables account for 53% of variability in house sale price. However, multicollinearity between bathrooms and sqft_living might have played a role in increasing this metric. 
+For our third model we wanted to take advantage of the recursive feature elimination (RFE) that we conducted after model 1 in order to prioritize which variables would be the most impactful to keep in our model. RFE is a feature selection method that fits a model while also removing the weakest features until the specified number of features to keep is achieved. We decided to keep six features in our model. Renovations are expensive and considering the most impactful variables will undoubtedly help our homeowner stakeholder manage their renovation priorities. We also included the categorical variable of home condition in this model, allowing us to see how the quality of materials used in a home can contribute to the overall sale price. The R-squared value of Model 3 was 0.531 which is an improvement on Model 2. This tells us that our x-variables account for 53% of variability in home sale price. However, multicollinearity between bathrooms and sqft_living might have played a role in increasing this metric. 
 
 ### Model 4
 
-From the heat map analysis, we wanted to see which variables had high multicollinearity. Multicollinearity occurs when more than one independent variable is highly correlated with another one in the regression model. An independent variable can be predicted from another independent variable in a regression model, which can convey some inaccuracies in the overall dataset. From our heat map we saw high multicollinearity between bathrooms and sqft_living, so we decided to feature engineer a ratio of floor to bathrooms to compensate for that factor. The R-squared value of Model 4 is 0.535 which is an improvement on Model 3. This tells us that our x-variables account for 54% of variability in house sale price. 
+From the heat map analysis, we wanted to see which variables had high multicollinearity. Multicollinearity occurs when more than one independent variable is highly correlated with another one in the regression model which tends to confound results. As previously mentioned, high multicollinearity between bathrooms and sqft_living existed so we decided to feature engineer a ratio of number of floor (levels in a home) to bathrooms to reduce multicollinearity. The R-squared value of Model 4 was 0.535 which is an improvement on Model 3. This tells us that our x-variables account for 54% of variability in home sale price. 
 
 ### Final Model
 
-For Model 5 decided to add yr_built to the independent variables used in Model 4 as we anticipated that we could improve our model by taking the age of the home into account. yr_built was also ranked as the third most important variable during our recursive feature analysis. Ultimately, our final model explored the continuous independent variables of bedrooms, floor_to_bath, sqft_living, and yr_built as well as the categorical independent variable of condition. Our final model was built to optimize R-squared with as few features as possible. 
+For Model 5 we decided to add yr_built to the independent variables used in Model 4 as we anticipated that we could improve our model by taking the age of the home into account. yr_built was also ranked as the third most important variable during our RFE analysis. Ultimately, our final model explored the continuous independent variables of bedrooms, floor_to_bath, sqft_living, and yr_built as well as the categorical independent variable of condition. Our final model was built to optimize R-squared with as few features as possible to reduce the complexity of our analysis. 
 
+The R-squared value of Model 5 was 0.564, the best of all the models run. This tells us that our x-variables account for 56% of variability in home sale price with a root mean squared error of $240146. In terms of feature coefficients, with all other features held constant, home sale prices drop by $6286331 for every 1 bedroom, increase $60136 for every 1 unit increase in floor-to-bathroom ratio, increase $347 for every additional square foot of living space, increase $2245 for every year the house ages, decrease $77720 if categorized as poor condition, decrease $69601 if categorized as fair condition, increase $2779 if categorized as good condition, and increase $46333 if categorized as very good condition.
 
+## Post Model Assumptions
 
-## Regression Results
-
-Ultimately the R-squared value of Model 5 (our final model) is 0.564 which is best for all the models run. This tells us that our x-variables account for 56% of variability in house sale price with a root mean squared error of $240,146.63. In terms of feature coefficients with all other features held constant, home values drop by $62,863.31 for every 1 bedroom, increase $60,136.22 for every 1 unit increase in floor-to-bathroom ratio, increase $347.16 for every additional square foot, increase $2,245.52 for every year the house ages, decrease $7,7720.71 if categorized as poor condition, decrease $69,601.81 if categorized as fair condition, increase $2,779.43 if categorized as good condition, and increase $4,6333.11 if categorized as very good condition.
-
-
-
-### Post Model Assumptions
-
-
-Heteroscedasticity is defined by an unequal representation of scatter. This factor is important to consider in the context of residuals because it shows a trend in the spread of the residuals. Heteroscedasticity becomes a probles within ordinary least squares regression because it assumes that all residuals are drawn from a population with constant variance. We do see a slight trend in this case. 
+Heteroscedasticity is identified by an unequal representation of datapoints in a scatterplot. Heteroscedasticity is important to consider in the context of model residual values because it shows a trend in the spread of the residuals. A lack of heteroscedasticity becomes an issue within ordinary least squares regression models because it assumes that all residuals are drawn from a population with constant variance. Unfortunately, in our analysis do see a slight trend toward homooscedasticityin this case. 
 
 <img width="465" alt="Screen Shot 2022-02-18 at 8 25 43 AM" src="https://user-images.githubusercontent.com/97462844/154713961-818a13b0-1ed4-448c-a537-8f5908c8c888.png">
 
-
-We can say from the image below that there is normality amongst our residuals as it is an assumption of running a linear model. Since the residuals of model are normal we can say that our assumptions are valid, so model predictions should be considered valid as well. 
+In the image below we can see that there is normality amongst our residuals as is assumed in the running a linear regression model. Since the residuals in model demonstrate normality we can see that the assumptions hold true and our model is valid. 
 
 <img width="425" alt="Screen Shot 2022-02-18 at 8 25 52 AM" src="https://user-images.githubusercontent.com/97462844/154713975-8ccdb0a5-f41f-4f58-80a4-4c3bf8515a22.png">
 
+## Conclusions and Key Takeaways
 
-### Conclusions and Key Takeaways
-
-Based on our analyses we recommend homeowners focus on three key actions to increase the value of their home via renovations.
+Based on our analyses we recommend homeowners focus on three key areas to increase the value of their home via renovations:
 
 1. Upgrade appliances as well as the fit and finish to improve the condition of the home.
 2. Do not add bedrooms in the renovation.
 3. Increase the floor-to-bathrooms ratio to further drive up the value of the home.
-
-
 
 ## For More Information
 View the full analysis via the [Jupyter Notebook](https://github.com/sgchatrathi/Real-Estate-Project-analysis/blob/main/Main%20Notebook.ipynb).
