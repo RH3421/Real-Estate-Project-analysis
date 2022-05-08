@@ -61,5 +61,7 @@ Based on our analyses we recommend homeowners focus on three key areas to increa
 2. Do not add bedrooms in the renovation.
 3. Increase the floor-to-bathrooms ratio to further drive up the value of the home.
 
+Further validating our findings is a recent CNN article [These home renovation projects get the best return on investment](https://www.cnn.com/2022/04/15/homes/us-homes-roi-on-renovation/index.html) which also found that upgrading appliances and finishes (such as refinishing and upgrading floors to hardwood) resulted in the greatest increases in value.
+
 ## For More Information
 View the full analysis via the [Jupyter Notebook](https://github.com/sgchatrathi/Real-Estate-Project-analysis/blob/main/Main%20Notebook.ipynb).
