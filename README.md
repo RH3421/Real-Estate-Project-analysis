@@ -2,8 +2,6 @@
 
 ![from giphy](https://media.giphy.com/media/l0IylQoMkcbZUbtKw/giphy.gif)
 
-Authors:  [Samira Chatrathi](https://github.com/sgchatrathi), [Andrew Choi](https://github.com/cjunhyuk), and [Richard Hinds](https://github.com/RH3421)
-
 ## Business Problem
 The real estate market is undoubtedly one of high volatility. Whether it is rooted in a housing bubble or localized to a very concentrated geographic region, home value is determined by a wide-array of factors, many of which lie outside of a homeowner's control. As data scientists we strive to identify factors and develop recommendations that are highly actionable. In the current case we decided to leverage the home sales dataset of King County, Washington to identify factors that homeowners could actively modify to increase the value of their home. In this way our stakeholders would have a clear understanding of which home improvements to prioritize to maximally increase their home value.
 
